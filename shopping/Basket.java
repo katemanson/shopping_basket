@@ -6,7 +6,7 @@ public class Basket {
   private ArrayList<Item> contents;
 
   public Basket() {
-    contents = new ArrayList<>();
+    this.contents = new ArrayList<>();
   }
 
   public ArrayList<Item> getContents() {
@@ -19,6 +19,10 @@ public class Basket {
 
   public void emptyBasket() {
     this.contents.clear();
+  }
+
+  public Item getItemWithIndex(int index) {
+    return this.contents.get(index);
   }
 
 }
