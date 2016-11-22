@@ -36,10 +36,15 @@ public class Basket {
     return null;
   }
 
+  public Item removeFirstItem() {
+    return this.contents.remove(0);
+  }
+
   // overloaded method -- remove item at index
   public Item removeItem(int index) {
     return this.contents.remove(index);
   }
+
 
   // overloaded method -- remove item with description
   public Item removeItem(String description) {
@@ -52,15 +57,15 @@ public class Basket {
     return null;
   }
 
-  public double calculateRawTotal() {
-    double total = 0;
-    for ( Item item : this.contents ) {
-      total += item.getPrice();
-    }
-    return total;
-  }
+  // public double calculateTotalAfterBogofs() {
+  //   double total = 0;
+  //   for ( Item item : this.contents ) {
+  //     total += item.getPrice();
+  //   }
+  //   return total;
+  // }
 
-  
+
 
 
 
