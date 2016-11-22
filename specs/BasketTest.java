@@ -48,6 +48,14 @@ public class BasketTest {
   }
 
   @Test
+  public void testCanGetFirstItem() {
+    basketOne.addItem(apples);
+    basketOne.addItem(bread);
+    assertEquals("Apples", basketOne.getFirstItem().getDescription());
+    assertEquals(2, basketOne.getContents().size());
+  }
+
+  @Test
   public void testCanGetItemWithIndex() {
     basketOne.addItem(apples);
     basketOne.addItem(bread);

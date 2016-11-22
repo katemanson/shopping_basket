@@ -21,6 +21,10 @@ public class Basket {
     this.contents.clear();
   }
 
+  public Item getFirstItem() {
+    return this.contents.get(0);
+  }
+
   // overloaded method -- get item at index
   public Item getItem(int index) {
     return this.contents.get(index);
@@ -59,7 +63,15 @@ public class Basket {
 
   // public double calculateTotalAfterBogofs() {
   //   double total = 0;
-  //   for ( Item item : this.contents ) {
+  //   int numberOfItems = this.contents.size(); 
+  //   for ( int i = 0; i < numberOfItems; i++ ) {
+  //     Item firstItem = this.contents.removeFirstItem();
+  //     for ( Item item : this.contents ) {
+  //       if ( item.equals(firstItem) && item.getBogofStatus() ) {
+  //         int index = this.contents.indexOf(item);
+  //         this.contents.remove(index);
+  //       }
+
   //     total += item.getPrice();
   //   }
   //   return total;
