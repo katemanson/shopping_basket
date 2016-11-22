@@ -7,11 +7,17 @@ public class BasketTest {
 
   Basket basketOne;
   Item barOfSoap;
+  Item milk;
+  Item apples;
+  Item bread;
 
   @Before
   public void before() {
     basketOne = new Basket();
     barOfSoap = new Item("Soap", 2.49);
+    milk = new Item("Milk", 1.09);
+    apples = new Item("Apples", 1.49);
+    bread = new Item("Bread", 1.74);
   }
 
   @Test
@@ -28,6 +34,16 @@ public class BasketTest {
   public void testCanAddItem() {
     basketOne.addItem(barOfSoap);
     assertEquals(1, basketOne.getContents().size());
+  }
+
+  public void testCanEmptyBasket() {
+    basketOne.addItem(barOfSoap);
+    basketOne.addItem(milk);
+    basketOne.addItem(apples);
+    basketOne.addItem(bread);
+    assertEquals(4, basketOne.getContents().size());
+    basketOne.emptyBasket();
+    assertEquals(0, basketOne.getContents().size());    
   }
 
 }

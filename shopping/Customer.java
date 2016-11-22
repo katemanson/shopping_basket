@@ -12,6 +12,13 @@ public class Customer {
     this.loyaltyCard = false;
   }
 
+  // overloaded constructor
+  public Customer(String name, double money, boolean loyaltyCard) {
+    this.name = name;
+    this.wallet = money;
+    this.loyaltyCard = loyaltyCard;
+  }
+
   public String getName() {
     return this.name;
   }

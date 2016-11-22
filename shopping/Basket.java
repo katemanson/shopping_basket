@@ -17,4 +17,8 @@ public class Basket {
     this.contents.add(itemToAdd);
   }
 
+  public void emptyBasket() {
+    this.contents.clear();
+  }
+
 }
