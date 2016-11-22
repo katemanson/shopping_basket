@@ -51,6 +51,14 @@ public class Basket {
     return null;
   }
 
+  public double calculateRawTotal() {
+    double total = 0;
+    for ( Item item : this.contents ) {
+      total += item.getPrice();
+    }
+    return total;
+  }
+
 
 
 

@@ -81,4 +81,13 @@ public class BasketTest {
     assertEquals(1, basketOne.getContents().size());
   }
 
+  @Test
+  public void canCalculateRawTotal() {
+    basketOne.addItem(apples);
+    basketOne.addItem(apples);
+    basketOne.addItem(bread);
+    basketOne.addItem(bread);
+    assertEquals(6.46, basketOne.calculateRawTotal(), 0.001);
+  }
+
 }
