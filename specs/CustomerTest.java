@@ -22,8 +22,26 @@ public class CustomerTest {
   }
 
   @Test
-  public void testCanGetLoyaltyCardStatus() {
-    assertEquals(false, customerOne.getLoyaltyCardStatus());
+  public void testHasLoyaltyCard() {
+    assertEquals(false, customerOne.hasLoyaltyCard());
+  }
+
+  @Test
+  public void testCanSetName() {
+    customerOne.setName("Freya");
+    assertEquals("Freya", customerOne.getName());
+  }
+
+  @Test
+  public void testCanSetWallet() {
+    customerOne.setWallet(20.00);
+    assertEquals(20.00, customerOne.getWallet(), 0.001);
+  }
+
+  @Test
+  public void testCanSetHasLoyaltyCard() {
+    customerOne.setHasLoyaltyCard(true);
+    assertEquals(true, customerOne.hasLoyaltyCard());
   }
 
 }
