@@ -21,7 +21,7 @@ public class Basket {
     this.contents.clear();
   }
 
-  // overloaded method -- get item with index
+  // overloaded method -- get item at index
   public Item getItem(int index) {
     return this.contents.get(index);
   }
@@ -36,11 +36,12 @@ public class Basket {
     return null;
   }
 
-  // overloaded method -- remove item with index
+  // overloaded method -- remove item at index
   public Item removeItem(int index) {
     return this.contents.remove(index);
   }
 
+  // overloaded method -- remove item with description
   public Item removeItem(String description) {
     for ( Item item : this.contents ) {
       if ( item.getDescription() == description ) {
@@ -58,6 +59,10 @@ public class Basket {
     }
     return total;
   }
+
+  
+
+
 
 
 

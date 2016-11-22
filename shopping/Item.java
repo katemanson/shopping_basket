@@ -6,10 +6,18 @@ public class Item {
   private double price;
   private boolean bogofStatus;
 
+  // overloaded constructor
   public Item(String description, double price) {
     this.description = description;
     this.price = price;
     this.bogofStatus = false;
+  }
+
+  // overloaded constructor
+  public Item(String description, double price, boolean bogofStatus) {
+    this.description = description;
+    this.price = price;
+    this.bogofStatus = bogofStatus;
   }
 
   public String getDescription() {
