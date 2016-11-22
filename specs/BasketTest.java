@@ -36,6 +36,7 @@ public class BasketTest {
     assertEquals(1, basketOne.getContents().size());
   }
 
+  @Test
   public void testCanEmptyBasket() {
     basketOne.addItem(barOfSoap);
     basketOne.addItem(milk);
@@ -46,10 +47,21 @@ public class BasketTest {
     assertEquals(0, basketOne.getContents().size());    
   }
 
+  @Test
   public void testCanGetItemWithIndex() {
     basketOne.addItem(apples);
     basketOne.addItem(bread);
     assertEquals("Bread", basketOne.getItemWithIndex(1).getDescription());
+    assertEquals(2, basketOne.getContents().size());
+  }
+
+  @Test
+  public void testCanRemoveItemAtIndex() {
+    basketOne.addItem(apples);
+    basketOne.addItem(bread);
+    assertEquals(2, basketOne.getContents().size());
+    basketOne.removeItemWithIndex(1);
+    assertEquals(1, basketOne.getContents().size());
   }
 
 }

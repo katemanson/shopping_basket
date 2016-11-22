@@ -25,4 +25,8 @@ public class Basket {
     return this.contents.get(index);
   }
 
+  public Item removeItemWithIndex(int index) {
+    return this.contents.remove(index);
+  }
+
 }
