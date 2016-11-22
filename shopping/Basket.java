@@ -21,14 +21,12 @@ public class Basket {
     this.contents.clear();
   }
 
+  // overloaded method -- get item with index
   public Item getItem(int index) {
     return this.contents.get(index);
   }
 
-  public Item removeItem(int index) {
-    return this.contents.remove(index);
-  }
-
+  // overloaded method -- get item with description
   public Item getItem(String description) {
     for ( Item item : this.contents ) {
       if ( item.getDescription() == description ) {
@@ -37,6 +35,22 @@ public class Basket {
     }
     return null;
   }
+
+  // overloaded method -- remove item with index
+  public Item removeItem(int index) {
+    return this.contents.remove(index);
+  }
+
+  public Item removeItem(String description) {
+    for ( Item item : this.contents ) {
+      if ( item.getDescription() == description ) {
+        int index = this.contents.indexOf(item);
+        return this.contents.remove(index);
+      }
+    }
+    return null;
+  }
+
 
 
 

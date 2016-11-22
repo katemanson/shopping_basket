@@ -68,10 +68,17 @@ public class BasketTest {
   public void canGetItemWithDescription() {
     basketOne.addItem(apples);
     basketOne.addItem(bread);
-    assertEquals(2, basketOne.getContents().size());
     assertEquals(Item.class, basketOne.getItem("Apples").getClass());
     assertEquals("Apples", basketOne.getItem("Apples").getDescription());
     assertEquals(2, basketOne.getContents().size());
+  }
+
+  @Test
+  public void canRemoveItemWithDescription() {
+    basketOne.addItem(apples);
+    basketOne.addItem(bread);
+    assertEquals("Apples", basketOne.removeItem("Apples").getDescription());
+    assertEquals(1, basketOne.getContents().size());
   }
 
 }
