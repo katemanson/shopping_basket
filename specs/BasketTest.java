@@ -51,7 +51,7 @@ public class BasketTest {
   public void testCanGetItemWithIndex() {
     basketOne.addItem(apples);
     basketOne.addItem(bread);
-    assertEquals("Bread", basketOne.getItemWithIndex(1).getDescription());
+    assertEquals("Bread", basketOne.getItem(1).getDescription());
     assertEquals(2, basketOne.getContents().size());
   }
 
@@ -60,8 +60,18 @@ public class BasketTest {
     basketOne.addItem(apples);
     basketOne.addItem(bread);
     assertEquals(2, basketOne.getContents().size());
-    basketOne.removeItemWithIndex(1);
+    basketOne.removeItem(1);
     assertEquals(1, basketOne.getContents().size());
+  }
+
+  @Test
+  public void canGetItemWithDescription() {
+    basketOne.addItem(apples);
+    basketOne.addItem(bread);
+    assertEquals(2, basketOne.getContents().size());
+    assertEquals(Item.class, basketOne.getItem("Apples").getClass());
+    assertEquals("Apples", basketOne.getItem("Apples").getDescription());
+    assertEquals(2, basketOne.getContents().size());
   }
 
 }

@@ -21,12 +21,23 @@ public class Basket {
     this.contents.clear();
   }
 
-  public Item getItemWithIndex(int index) {
+  public Item getItem(int index) {
     return this.contents.get(index);
   }
 
-  public Item removeItemWithIndex(int index) {
+  public Item removeItem(int index) {
     return this.contents.remove(index);
   }
+
+  public Item getItem(String description) {
+    for ( Item item : this.contents ) {
+      if ( item.getDescription() == description ) {
+        return item;
+      }
+    }
+    return null;
+  }
+
+
 
 }
