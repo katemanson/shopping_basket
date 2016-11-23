@@ -10,6 +10,7 @@ public class BasketTest {
   Item milk;
   Item apples;
   Item bread;
+  Item oliveOil;
 
   @Before
   public void before() {
@@ -18,6 +19,7 @@ public class BasketTest {
     milk = new Item("Milk", 1.09, false);
     apples = new Item("Apples", 1.49, true);
     bread = new Item("Bread", 1.74, true);
+    oliveOil = new Item("Olive Oil", 8.98, false);
   }
 
   @Test
@@ -152,6 +154,25 @@ public class BasketTest {
   }
 
   @Test
-  public void test
+  public void canApplyThresholdDiscount_Discount() {
+    basketOne.addItem(oliveOil);
+    basketOne.addItem(oliveOil);
+    basketOne.addItem(oliveOil);
+    basketOne.addItem(oliveOil);
+    basketOne.addItem(apples);
+    basketOne.addItem(apples);
+    basketOne.addItem(barOfSoap);
+    assertEquals(35.91, basketOne.applyThresholdDiscount(), 0.001);
+  }
+
+  @Test
+  public void canApplyThresholdDiscount_NoDiscount() {
+    basketOne.addItem(oliveOil);
+    basketOne.addItem(apples);
+    basketOne.addItem(apples);
+    basketOne.addItem(bread);
+    assertEquals(12.21, basketOne.applyThresholdDiscount(), 0.001);
+  }
+
 
 }

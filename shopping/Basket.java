@@ -101,7 +101,16 @@ public class Basket {
     return total;
   }
 
-  
+  public double applyThresholdDiscount() {
+    if ( bogofCost() > 20.0 ) {
+      return bogofCost() * 0.9;
+    }
+    else return bogofCost();
+  }
+
+
+
+
 
 
 
