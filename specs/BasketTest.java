@@ -48,14 +48,6 @@ public class BasketTest {
   }
 
   @Test
-  public void testCanGetFirstItem() {
-    basketOne.addItem(apples);
-    basketOne.addItem(bread);
-    assertEquals("Apples", basketOne.getFirstItem().getDescription());
-    assertEquals(2, basketOne.getContents().size());
-  }
-
-  @Test
   public void testCanGetItemWithIndex() {
     basketOne.addItem(apples);
     basketOne.addItem(bread);
@@ -91,19 +83,33 @@ public class BasketTest {
   }
 
   @Test
+  public void testCanGetFirstItem() {
+    basketOne.addItem(apples);
+    basketOne.addItem(bread);
+    assertEquals("Apples", basketOne.getFirstItem().getDescription());
+    assertEquals(2, basketOne.getContents().size());
+  }
+
+  @Test
   public void canRemoveFirstItem() {
     basketOne.addItem(apples);
     basketOne.addItem(bread);
-
+    assertEquals("Apples", basketOne.getFirstItem().getDescription());
+    assertEquals(2, basketOne.getContents().size());
+    basketOne.removeFirstItem();
+    assertEquals("Bread", basketOne.getFirstItem().getDescription());
+    assertEquals(1, basketOne.getContents().size());
   }
 
   // @Test
-  // public void canCalculateRawTotal() {
+  // public void canRemoveFreeBogofItems() {
+  //   basketOne.addItem(apples);
   //   basketOne.addItem(apples);
   //   basketOne.addItem(apples);
   //   basketOne.addItem(bread);
   //   basketOne.addItem(bread);
-  //   assertEquals(6.46, basketOne.calculateRawTotal(), 0.001);
+  //   basketOne.removeFreeBogofItems();
+  //   assertEquals(3, basketOne.getContents().size());
   // }
 
   // @Test

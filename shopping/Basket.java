@@ -49,7 +49,6 @@ public class Basket {
     return this.contents.remove(index);
   }
 
-
   // overloaded method -- remove item with description
   public Item removeItem(String description) {
     for ( Item item : this.contents ) {
@@ -61,7 +60,15 @@ public class Basket {
     return null;
   }
 
-  // public double calculateTotalAfterBogofs() {
+  // public void basketWithoutFreeBogofItems() {
+    
+    
+  // }
+
+
+
+  // public double basketWithoutFreeBogofItems() {
+
   //   double total = 0;
   //   int numberOfItems = this.contents.size(); 
   //   for ( int i = 0; i < numberOfItems; i++ ) {

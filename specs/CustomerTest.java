@@ -32,6 +32,18 @@ public class CustomerTest {
   }
 
   @Test
+  public void testCanGetShopping() {
+    assertEquals(0, customerOne.getShopping().size());
+    assertEquals(0, customerTwo.getShopping().size());
+  }
+
+  @Test
+  public void testNoShoppingToStartWith() {
+    assertEquals(0, customerOne.getShopping().size());
+    assertEquals(0, customerTwo.getShopping().size());
+  }
+
+  @Test
   public void testCanSetName() {
     customerOne.setName("Freya");
     customerTwo.setName("Magnus");
