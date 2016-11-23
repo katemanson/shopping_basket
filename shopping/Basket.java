@@ -91,7 +91,7 @@ public class Basket {
       else notFreeItems.add(anItem);
     }
     return notFreeItems;
-  }
+  }       
 
   public double bogofCost() {
     double total = 0;
@@ -114,15 +114,5 @@ public class Basket {
     }
     else return applyThresholdDiscount();
   }
-
-
-
-
-
-
-
-
-
-
 
 }

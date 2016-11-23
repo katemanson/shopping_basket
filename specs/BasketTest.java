@@ -187,7 +187,7 @@ public class BasketTest {
     basketOne.addItem(apples);
     basketOne.addItem(apples);
     basketOne.addItem(barOfSoap);
-    assertEquals(35.20, basketOne.applyLoyaltyDiscount(customerOne), 0.001);
+    assertEquals(35.20, basketOne.applyLoyaltyDiscount(customerOne), 0.01);
   }
 
   @Test
