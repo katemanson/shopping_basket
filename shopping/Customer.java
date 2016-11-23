@@ -51,4 +51,8 @@ public class Customer {
     this.loyaltyCard = newStatus;
   }
 
+  public void takeItems(Basket basket) {
+    this.shopping.addAll(basket.getContents());
+  }
+
 }
