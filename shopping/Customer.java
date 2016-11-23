@@ -6,13 +6,13 @@ public class Customer {
   private String name;
   private double wallet;
   private boolean loyaltyCard;
-  private ArrayList<Item> shopping;
+  private ArrayList<Item> shoppingBag;
 
   public Customer(String name, double money) {
     this.name = name;
     this.wallet = money;
     this.loyaltyCard = false;
-    this.shopping = new ArrayList<>();
+    this.shoppingBag = new ArrayList<>();
   }
 
   // overloaded constructor
@@ -20,7 +20,7 @@ public class Customer {
     this.name = name;
     this.wallet = money;
     this.loyaltyCard = loyaltyCard;
-    this.shopping = new ArrayList<>();
+    this.shoppingBag = new ArrayList<>();
   }
 
   public String getName() {
@@ -35,8 +35,8 @@ public class Customer {
     return this.loyaltyCard;
   }
 
-  public ArrayList<Item> getShopping() {
-    return this.shopping;
+  public ArrayList<Item> getShoppingBag() {
+    return this.shoppingBag;
   }
 
   public void setName(String newName) {
@@ -51,8 +51,8 @@ public class Customer {
     this.loyaltyCard = newStatus;
   }
 
-  public void takeItems(Basket basket) {
-    this.shopping.addAll(basket.getContents());
+  public void packBag(Basket basket) {
+    this.shoppingBag.addAll(basket.getContents());
   }
 
 }

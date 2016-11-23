@@ -60,7 +60,7 @@ public class Basket {
     return null;
   }
 
-  // overloaded method -- remove item with Item object
+  // overloaded method -- remove item as Item object
   public Item removeItem(Item item) {
     for ( Item anItem : this.contents ) {
       if ( anItem.equals(item) ) {
@@ -69,50 +69,6 @@ public class Basket {
       }
     }
     return null;
-  }
-
-  public double totalCost() {
-    double total = 0;
-    for ( Item anItem : this.contents ) {
-      total += anItem.getPrice();
-    }
-    return total;
-  }
-
-  private ArrayList<Item> removeFreeBogofItems() {
-    ArrayList<Item> notFreeItems = new ArrayList<>();
-    ArrayList<Item> freeItems = new ArrayList<>();
-
-    for ( Item anItem : this.contents ) {
-      if ( anItem.getBogofStatus() && ( Collections.frequency(notFreeItems, anItem) - Collections.frequency(freeItems, anItem) == 1) ) {
-
-        freeItems.add(anItem);
-      }
-      else notFreeItems.add(anItem);
-    }
-    return notFreeItems;
-  }       
-
-  public double bogofCost() {
-    double total = 0;
-    for ( Item anItem : removeFreeBogofItems() ) {
-      total += anItem.getPrice();
-    }
-    return total;
-  }
-
-  public double applyThresholdDiscount() {
-    if ( bogofCost() > 20.0 ) {
-      return bogofCost() * 0.9;
-    }
-    else return bogofCost();
-  }
-
-  public double applyLoyaltyDiscount(Customer aCustomer) {
-    if ( aCustomer.hasLoyaltyCard() ) {
-      return applyThresholdDiscount() * 0.98;
-    }
-    else return applyThresholdDiscount();
   }
 
 }

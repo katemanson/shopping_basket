@@ -35,13 +35,13 @@ public class CustomerTest {
   }
 
   @Test
-  public void testCanGetName() {
+  public void canGetName() {
     assertEquals("Floortje", customerOne.getName());
     assertEquals("Lowrie", customerTwo.getName());
   }
 
   @Test
-  public void testCanGetWallet() {
+  public void canGetWallet() {
     assertEquals(40.00, customerOne.getWallet(), 0.001);
     assertEquals(150.00, customerTwo.getWallet(), 0.001);
   }
@@ -53,13 +53,13 @@ public class CustomerTest {
   }
 
   @Test
-  public void testCanGetShopping() {
-    assertEquals(0, customerOne.getShopping().size());
-    assertEquals(0, customerTwo.getShopping().size());
+  public void canGetShoppingBag() {
+    assertEquals(0, customerOne.getShoppingBag().size());
+    assertEquals(0, customerTwo.getShoppingBag().size());
   }
 
   @Test
-  public void testCanSetName() {
+  public void canSetName() {
     customerOne.setName("Freya");
     customerTwo.setName("Magnus");
     assertEquals("Freya", customerOne.getName());
@@ -67,7 +67,7 @@ public class CustomerTest {
   }
 
   @Test
-  public void testCanSetWallet() {
+  public void canSetWallet() {
     customerOne.setWallet(20.00);
     customerTwo.setWallet(100.00);
     assertEquals(20.00, customerOne.getWallet(), 0.001);
@@ -75,7 +75,7 @@ public class CustomerTest {
   }
 
   @Test
-  public void testCanSetHasLoyaltyCard() {
+  public void canSetHasLoyaltyCard() {
     customerOne.setHasLoyaltyCard(true);
     customerTwo.setHasLoyaltyCard(false);
     assertEquals(true, customerOne.hasLoyaltyCard());
@@ -83,9 +83,9 @@ public class CustomerTest {
   }
 
   @Test
-  public void testCanTakeItemsFromBasket() {
-    customerOne.takeItems(basket);
-    assertEquals(7, customerOne.getShopping().size());
+  public void canPackBag() {
+    customerOne.packBag(basket);
+    assertEquals(7, customerOne.getShoppingBag().size());
   } 
 
 }
