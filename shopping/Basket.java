@@ -60,30 +60,48 @@ public class Basket {
     return null;
   }
 
-  // public void basketWithoutFreeBogofItems() {
-    
-    
-  // }
+  // overloaded method -- remove item with Item object
+  public Item removeItem(Item item) {
+    for ( Item anItem : this.contents ) {
+      if ( anItem.equals(item) ) {
+        int index = this.contents.indexOf(anItem);
+        return this.contents.remove(index);
+      }
+    }
+    return null;
+  }
 
+  public double totalCost() {
+    double total = 0;
+    for ( Item anItem : this.contents ) {
+      total += anItem.getPrice();
+    }
+    return total;
+  }
 
+  private ArrayList<Item> removeFreeBogofItems() {
+    ArrayList<Item> notFreeItems = new ArrayList<>();
+    ArrayList<Item> freeItems = new ArrayList<>();
 
-  // public double basketWithoutFreeBogofItems() {
+    for ( Item anItem : this.contents ) {
+      if ( anItem.getBogofStatus() && ( Collections.frequency(notFreeItems, anItem) - Collections.frequency(freeItems, anItem) == 1) ) {
 
-  //   double total = 0;
-  //   int numberOfItems = this.contents.size(); 
-  //   for ( int i = 0; i < numberOfItems; i++ ) {
-  //     Item firstItem = this.contents.removeFirstItem();
-  //     for ( Item item : this.contents ) {
-  //       if ( item.equals(firstItem) && item.getBogofStatus() ) {
-  //         int index = this.contents.indexOf(item);
-  //         this.contents.remove(index);
-  //       }
+        freeItems.add(anItem);
+      }
+      else notFreeItems.add(anItem);
+    }
+    return notFreeItems;
+  }
 
-  //     total += item.getPrice();
-  //   }
-  //   return total;
-  // }
+  public double bogofCost() {
+    double total = 0;
+    for ( Item anItem : removeFreeBogofItems() ) {
+      total += anItem.getPrice();
+    }
+    return total;
+  }
 
+  
 
 
 

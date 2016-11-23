@@ -101,43 +101,57 @@ public class BasketTest {
     assertEquals(1, basketOne.getContents().size());
   }
 
-  // @Test
-  // public void canRemoveFreeBogofItems() {
-  //   basketOne.addItem(apples);
-  //   basketOne.addItem(apples);
-  //   basketOne.addItem(apples);
-  //   basketOne.addItem(bread);
-  //   basketOne.addItem(bread);
-  //   basketOne.removeFreeBogofItems();
-  //   assertEquals(3, basketOne.getContents().size());
-  // }
+  @Test
+  public void canRemoveItemAsObject() {
+    basketOne.addItem(apples);
+    basketOne.addItem(apples);
+    basketOne.addItem(bread);
+    basketOne.addItem(bread);
+    basketOne.addItem(bread);
+    assertEquals(5, basketOne.getContents().size());    
+    basketOne.removeItem(apples);
+    assertEquals(4, basketOne.getContents().size());
+  }
 
-  // @Test
-  // public void canCalculateTotalAfterBogofs_TwoItems() {
-  //   basketOne.addItem(apples);
-  //   basketOne.addItem(apples);
-  //   assertEquals(1.49, basketOne.calculateRawTotal(), 0.001);
-  // }
+  @Test
+  public void canGetTotalCost() {
+      basketOne.addItem(apples);
+      basketOne.addItem(apples);
+      basketOne.addItem(apples);
+      basketOne.addItem(bread);
+      basketOne.addItem(bread);
+      assertEquals(7.95, basketOne.totalCost(), 0.001);
+  }
 
-  // @Test
-  // public void canCalculateTotalAfterBogofs_ThreeItems() {
-  //   basketOne.addItem(apples);
-  //   basketOne.addItem(apples);
-  //   basketOne.addItem(apples);
-  //   assertEquals(2.98, basketOne.calculateRawTotal(), 0.001);
-  // }
+  @Test
+  public void testBogofCost_TwoItems() {
+    basketOne.addItem(apples);
+    basketOne.addItem(apples);
+    assertEquals(1.49, basketOne.bogofCost(), 0.001);
+  }
 
-  // @Test
-  // public void canCalculateTotalAfterBogofs_VariousItems() {
-  //   basketOne.addItem(apples);
-  //   basketOne.addItem(apples);
-  //   basketOne.addItem(bread);
-  //   basketOne.addItem(bread);
-  //   basketOne.addItem(bread);
-  //   basketOne.addItem(barOfSoap);
-  //   basketOne.addItem(barOfSoap);
-  //   basketOne.addItem(milk);
-  //   assertEquals(11.04, basketOne.calculateRawTotal(), 0.001);
-  // }
+  @Test
+  public void testBogofCost_ThreeItems() {
+    basketOne.addItem(apples);
+    basketOne.addItem(apples);
+    basketOne.addItem(apples);
+    assertEquals(2.98, basketOne.bogofCost(), 0.001);
+  }
+
+  @Test
+  public void testBogofCost_VariousItems() {
+    basketOne.addItem(apples);
+    basketOne.addItem(apples);
+    basketOne.addItem(bread);
+    basketOne.addItem(bread);
+    basketOne.addItem(bread);
+    basketOne.addItem(barOfSoap);
+    basketOne.addItem(barOfSoap);
+    basketOne.addItem(milk);
+    assertEquals(11.04, basketOne.bogofCost(), 0.001);
+  }
+
+  @Test
+  public void test
 
 }
