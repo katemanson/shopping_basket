@@ -108,6 +108,13 @@ public class Basket {
     else return bogofCost();
   }
 
+  public double applyLoyaltyDiscount(Customer aCustomer) {
+    if ( aCustomer.hasLoyaltyCard() ) {
+      return applyThresholdDiscount() * 0.98;
+    }
+    else return applyThresholdDiscount();
+  }
+
 
 
 

@@ -6,6 +6,8 @@ import shopping.*;
 public class BasketTest {
 
   Basket basketOne;
+  Customer customerOne;
+  Customer customerTwo;
   Item barOfSoap;
   Item milk;
   Item apples;
@@ -15,6 +17,8 @@ public class BasketTest {
   @Before
   public void before() {
     basketOne = new Basket();
+    customerOne = new Customer("Floortje", 50.00, true);
+    customerTwo = new Customer("Lowrie", 50.00, false);
     barOfSoap = new Item("Soap", 2.49, false);
     milk = new Item("Milk", 1.09, false);
     apples = new Item("Apples", 1.49, true);
@@ -174,5 +178,25 @@ public class BasketTest {
     assertEquals(12.21, basketOne.applyThresholdDiscount(), 0.001);
   }
 
+  @Test
+  public void canApplyLoyaltyDiscount_LoyaltyCard() {
+    basketOne.addItem(oliveOil);
+    basketOne.addItem(oliveOil);
+    basketOne.addItem(oliveOil);
+    basketOne.addItem(oliveOil);
+    basketOne.addItem(apples);
+    basketOne.addItem(apples);
+    basketOne.addItem(barOfSoap);
+    assertEquals(35.20, basketOne.applyLoyaltyDiscount(customerOne), 0.001);
+  }
+
+  @Test
+  public void canApplyLoyaltyDiscount_NoLoyaltyCard() {
+    basketOne.addItem(oliveOil);
+    basketOne.addItem(apples);
+    basketOne.addItem(apples);
+    basketOne.addItem(bread);
+    assertEquals(12.21, basketOne.applyLoyaltyDiscount(customerTwo), 0.001);
+  }
 
 }
