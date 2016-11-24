@@ -21,7 +21,8 @@ public class Checkout {
     this.discounts.add(discount);
   }
 
-  public double totalBeforeDiscounts() {
+  // ?Why?
+  public double rawTotal() {
     double total = 0;
     for ( Item item : basket.getContents() ) {
       total += item.getPrice();
@@ -29,6 +30,13 @@ public class Checkout {
     return total;
   }
 
+  public double discountedTotal() {
+    double total = 0;
+    for ( Discountable discount : this.discounts ) {
+      total = discount.applyDiscount();
+    }
+    return total; 
+  }
 
 
   // public void finalCost() {

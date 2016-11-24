@@ -10,6 +10,13 @@ public class CheckoutTest {
   Basket basketTwo;
   Checkout checkoutOne;
   Checkout checkoutTwo;
+  BogofDiscount bogofOne;
+  BogofDiscount bogofTwo;
+  ThresholdDiscount thresholdOne;
+  ThresholdDiscount thresholdTwo;
+  ThresholdDiscount thresholdBasic;
+  LoyaltyDiscount loyaltyOne;
+  LoyaltyDiscount loyaltyTwo;
 
   @Before
   public void before() {
@@ -21,6 +28,13 @@ public class CheckoutTest {
   setUpBasketTwo();
   checkoutOne = new Checkout(customerOne, basketOne);
   checkoutTwo = new Checkout(customerTwo, basketTwo);
+  thresholdBasic = new ThresholdDiscount(100);
+  bogofOne = new BogofDiscount(basketOne);
+  bogofTwo = new BogofDiscount(basketTwo);
+  thresholdOne = new ThresholdDiscount(bogofOne.applyDiscount());
+  thresholdTwo = new ThresholdDiscount(bogofTwo.applyDiscount());
+  loyaltyOne = new LoyaltyDiscount(customerOne, thresholdOne.applyDiscount());
+  loyaltyTwo = new LoyaltyDiscount(customerTwo, thresholdTwo.applyDiscount());
   }
 
   private void setUpBasketOne() {
@@ -66,17 +80,34 @@ public class CheckoutTest {
   }
 
   @Test
-  public void canGetTotalBeforeDiscounts() {
-    assertEquals(27.25, checkoutOne.totalBeforeDiscounts(), 0.01);
-    assertEquals(35.20, checkoutTwo.totalBeforeDiscounts(), 0.01);
+  public void canGetRawTotal() {
+    assertEquals(27.25, checkoutOne.rawTotal(), 0.01);
+    assertEquals(35.20, checkoutTwo.rawTotal(), 0.01);
   }
 
-  // @Test
-  // public void canApplyDiscounts() {
-  //   checkoutOne.setDiscount(new BogofDiscount(basketOne));
-  //   checkoutOne.setDiscount(new )
-  //   assertEquals(21.62, checkoutOne.totalAfterDiscounts());
-  //   assertEquals(29.95, checkoutTwo.totalAfterDiscounts());
-  // }
+  @Test
+  public void canApplyDiscounts_Simple() {
+    checkoutOne.setDiscount(thresholdBasic);
+    assertEquals(1, checkoutOne.getDiscounts().size());
+    assertEquals(90.0, checkoutOne.discountedTotal(), 0.01);
+  }
+
+  @Test
+  public void canApplyDiscounts_BitMoreComplex() {
+    checkoutOne.setDiscount(bogofOne);
+    checkoutOne.setDiscount(thresholdOne);
+    checkoutOne.setDiscount(loyaltyOne);
+    assertEquals(3, checkoutOne.getDiscounts().size());
+    assertEquals(21.62, checkoutOne.discountedTotal(), 0.01);
+  }
+
+  @Test
+  public void canApplyDiscounts_MoreComplexAgain() {
+    checkoutTwo.setDiscount(bogofTwo);
+    checkoutTwo.setDiscount(thresholdTwo);
+    checkoutTwo.setDiscount(loyaltyTwo);
+    assertEquals(3, checkoutTwo.getDiscounts().size());
+    assertEquals(29.07, checkoutTwo.discountedTotal(), 0.01);
+  }
 
 }
