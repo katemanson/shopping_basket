@@ -8,7 +8,7 @@ public class BasketTest {
   Basket basketOne;
   Customer customerOne;
   Customer customerTwo;
-  Item barOfSoap;
+  Item soap;
   Item milk;
   Item apples;
   Item bread;
@@ -19,7 +19,7 @@ public class BasketTest {
     basketOne = new Basket();
     customerOne = new Customer("Floortje", 50.00, true);
     customerTwo = new Customer("Lowrie", 50.00, false);
-    barOfSoap = new Item("Soap", 2.49, false);
+    soap = new Item("Soap", 2.49, false);
     milk = new Item("Milk", 1.09, false);
     apples = new Item("Apples", 1.49, true);
     bread = new Item("Bread", 1.74, true);
@@ -37,14 +37,25 @@ public class BasketTest {
   }
 
   @Test
-  public void testCanAddItem() {
-    basketOne.addItem(barOfSoap);
+  public void canAddItem() {
+    basketOne.addItem(soap);
     assertEquals(1, basketOne.getContents().size());
   }
 
   @Test
+  public void canAddItems() {
+    ArrayList<Item> itemsToAdd = new ArrayList<>();
+    itemsToAdd.add(soap);
+    itemsToAdd.add(milk);
+    itemsToAdd.add(apples);
+    itemsToAdd.add(bread);
+    basketOne.addItems(itemsToAdd);
+    assertEquals(4, basketOne.getContents().size());
+  }
+
+  @Test
   public void testCanEmptyBasket() {
-    basketOne.addItem(barOfSoap);
+    basketOne.addItem(soap);
     basketOne.addItem(milk);
     basketOne.addItem(apples);
     basketOne.addItem(bread);
@@ -65,7 +76,7 @@ public class BasketTest {
   public void testCanRemoveItemAtIndex() {
     basketOne.addItem(apples);
     basketOne.addItem(bread);
-    basketOne.addItem(barOfSoap);
+    basketOne.addItem(soap);
     assertEquals(3, basketOne.getContents().size());
     assertEquals("Apples", basketOne.removeFirstItem().getDescription());
     assertEquals(2, basketOne.getContents().size());

@@ -17,6 +17,10 @@ public class Basket {
     this.contents.add(itemToAdd);
   }
 
+  public void addItems(ArrayList<Item> itemsToAdd) {
+    this.contents.addAll(itemsToAdd);
+  }
+
   public void emptyBasket() {
     this.contents.clear();
   }

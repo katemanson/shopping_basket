@@ -17,7 +17,11 @@ public class Checkout {
     return this.discounts;
   }
 
-  public double totalAfterDiscounts() {
+  public void setDiscount(Discountable discount) {
+    this.discounts.add(discount);
+  }
+
+  public double totalBeforeDiscounts() {
     double total = 0;
     for ( Item item : basket.getContents() ) {
       total += item.getPrice();
