@@ -81,8 +81,6 @@ public class Checkout {
       this.customer.setWallet( wallet - discountedTotal() );
       this.customer.packBag(this.basket);
       this.basket.emptyBasket();
-      System.out.println(discountedTotal());
-      System.out.println( "Total paid: £" + discountedTotal() + "\nAmount left in wallet: £" + this.customer.getWallet() + "\n" + listBagContents() + "\n" + listBasketContents());
       return "Total paid: £" + discountedTotal() + "\nAmount left in wallet: £" + this.customer.getWallet() + "\n" + listBagContents() + "\n" + listBasketContents();
     }
   }
