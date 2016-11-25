@@ -72,7 +72,6 @@ public class Checkout {
   }
 
   public String checkout() {
-
     double wallet = this.customer.getWallet();
 
     if ( wallet < discountedTotal() ) {

@@ -157,4 +157,11 @@ public class CheckoutTest {
     assertEquals(0, basketTwo.getContents().size());
   }
 
+  // 'Stubbed' test (?I think... ?correct term/use?)
+  @Test
+  public void testCheckout_NotEnoughMoney() {
+    checkoutOne.setDiscount(thresholdBasic);
+    assertEquals("Not enough in wallet", checkoutOne.checkout());
+  }
+
 }
