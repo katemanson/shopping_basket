@@ -86,14 +86,14 @@ public class CheckoutTest {
   }
 
   @Test
-  public void canApplyDiscounts_Simple() {
+  public void canApplyDiscounts_Basic() {
     checkoutOne.setDiscount(thresholdBasic);
     assertEquals(1, checkoutOne.getDiscounts().size());
     assertEquals(90.0, checkoutOne.discountedTotal(), 0.01);
   }
 
   @Test
-  public void canApplyDiscounts_BitMoreComplex() {
+  public void canApplyDiscounts_LessBasic() {
     checkoutOne.setDiscount(bogofOne);
     checkoutOne.setDiscount(thresholdOne);
     checkoutOne.setDiscount(loyaltyOne);
@@ -102,12 +102,53 @@ public class CheckoutTest {
   }
 
   @Test
-  public void canApplyDiscounts_MoreComplexAgain() {
+  public void canApplyDiscounts_LessBasicAgain() {
     checkoutTwo.setDiscount(bogofTwo);
     checkoutTwo.setDiscount(thresholdTwo);
     checkoutTwo.setDiscount(loyaltyTwo);
     assertEquals(3, checkoutTwo.getDiscounts().size());
     assertEquals(29.07, checkoutTwo.discountedTotal(), 0.01);
+  }
+
+  @Test
+  public void canListBasketContents_Empty() {
+    Basket emptyBasket = new Basket();
+    Checkout checkout = new Checkout(customerOne, emptyBasket);
+    assertEquals("Basket is empty", checkout.listBasketContents());
+  }
+
+  @Test
+  public void canListBasketContents_NotEmpty() {
+    String basketContents = "Basket contains: \nMilk\nApples\nApples\nBread\nBread\nBread\nOlive Oil\nOlive Oil";
+    assertEquals(basketContents, checkoutOne.listBasketContents());
+  }
+
+  @Test
+  public void canListBagContents_Empty() {
+    assertEquals("Bag is empty", checkoutOne.listBagContents());
+  }
+
+  @Test
+  public void canListBagContents_NotEmpty() {
+    customerOne.packBag(basketOne);
+    String bagContents = "Bag contains: \nMilk\nApples\nApples\nBread\nBread\nBread\nOlive Oil\nOlive Oil";
+    assertEquals(bagContents, checkoutOne.listBagContents());
+  }
+
+  @Test
+  public void testCheckout_One() {
+    checkoutOne.checkout();
+    // assertEquals(18.38, customerOne.getWallet(), 0.01);
+    assertEquals(8, customerOne.getShoppingBag().size());
+    assertEquals(0, basketOne.getContents().size());
+  }
+
+  @Test
+  public void testCheckout_Two() {
+    checkoutTwo.checkout();
+    // assertEquals(120.93, customerTwo.getWallet(), 0.01);
+    assertEquals(8, customerTwo.getShoppingBag().size());
+    assertEquals(0, basketTwo.getContents().size());
   }
 
 }
