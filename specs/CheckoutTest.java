@@ -137,16 +137,22 @@ public class CheckoutTest {
 
   @Test
   public void testCheckout_One() {
+    checkoutOne.setDiscount(bogofOne);
+    checkoutOne.setDiscount(thresholdOne);
+    checkoutOne.setDiscount(loyaltyOne);
     checkoutOne.checkout();
-    // assertEquals(18.38, customerOne.getWallet(), 0.01);
+    assertEquals(18.38, customerOne.getWallet(), 0.01);
     assertEquals(8, customerOne.getShoppingBag().size());
     assertEquals(0, basketOne.getContents().size());
   }
 
   @Test
   public void testCheckout_Two() {
+    checkoutTwo.setDiscount(bogofTwo);
+    checkoutTwo.setDiscount(thresholdTwo);
+    checkoutTwo.setDiscount(loyaltyTwo);
     checkoutTwo.checkout();
-    // assertEquals(120.93, customerTwo.getWallet(), 0.01);
+    assertEquals(120.93, customerTwo.getWallet(), 0.01);
     assertEquals(8, customerTwo.getShoppingBag().size());
     assertEquals(0, basketTwo.getContents().size());
   }
